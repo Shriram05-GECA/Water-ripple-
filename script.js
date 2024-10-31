@@ -29,12 +29,12 @@ function animateRipples() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ripples.forEach(ripple => {
-    ripple.radius += 2; // Ripple growth speed
+    ripple.radius += 1; // Ripple growth speed
     ripple.opacity -= 0.005; // Fade out over time
 
     ctx.beginPath();
     ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = `rgba(0, 0, 255, ${ripple.opacity})`; // Blue ripple with fading opacity
+    ctx.strokeStyle = `rgba(77, 119, 145, ${ripple.opacity})`; // Blue ripple with fading opacity
     ctx.lineWidth = 2;
     ctx.stroke();
   });
