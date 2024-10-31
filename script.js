@@ -16,12 +16,12 @@ canvas.addEventListener('touchstart', (e) => {
 
 // Function to create a ripple effect
 function createRipple(x, y) {
-  const ripple = { x, y, radius: 0, opacity: 1 };
+  const ripple = { x, y, radius: 0, opacity: 2 };
   ripples.push(ripple);
   
   setTimeout(() => {
     ripples = ripples.filter(r => r !== ripple); // Remove ripple after 3 seconds
-  }, 3000);
+  }, 2000);
 }
 
 // Function to animate ripples
@@ -30,7 +30,7 @@ function animateRipples() {
 
   ripples.forEach(ripple => {
     ripple.radius += 1; // Ripple growth speed
-    ripple.opacity -= 0.005; // Fade out over time
+    ripple.opacity -= 0.0025; // Fade out over time
 
     ctx.beginPath();
     ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
