@@ -26,7 +26,7 @@ function createRipple(x, y) {
 
 // Function to animate ripples
 function animateRipples() {
-  ctx.fillStyle = "rgb(230,234,255)";
+  ctx.fillStyle = "rgb( 104, 100, 255)";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ripples.forEach(ripple => {
