@@ -21,20 +21,21 @@ function createRipple(x, y) {
   
   setTimeout(() => {
     ripples = ripples.filter(r => r !== ripple); // Remove ripple after 3 seconds
-  }, 2000);
+  }, 3000);
 }
 
 // Function to animate ripples
 function animateRipples() {
+  ctx.fillStyle = "rgb(230,234,255)";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ripples.forEach(ripple => {
     ripple.radius += 1; // Ripple growth speed
-    ripple.opacity -= 0.0025; // Fade out over time
+    ripple.opacity -= 0.0005; // Fade out over time
 
     ctx.beginPath();
     ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = `rgba(77, 119, 145, ${ripple.opacity})`; // Blue ripple with fading opacity
+    ctx.strokeStyle = `rgba(74,78, 105, ${ripple.opacity})`; // Blue ripple with fading opacity
     ctx.lineWidth = 2;
     ctx.stroke();
   });
