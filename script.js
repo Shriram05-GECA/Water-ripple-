@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById('rippleCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -16,26 +17,25 @@ canvas.addEventListener('touchstart', (e) => {
 
 // Function to create a ripple effect
 function createRipple(x, y) {
-  const ripple = { x, y, radius: 0, opacity: 2 };
+  const ripple = { x, y, radius: 0, opacity: 1 };
   ripples.push(ripple);
-  
-  setTimeout(() => {
-    ripples = ripples.filter(r => r !== ripple); // Remove ripple after 3 seconds
-  }, 3000);
 }
 
 // Function to animate ripples
 function animateRipples() {
-  ctx.fillStyle = "rgb( 104, 100, 255)";
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Set the background color
+  ctx.fillStyle = "rgb(230, 234, 255)"; // Light purple background
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ripples = ripples.filter(ripple => ripple.opacity > 0); // Keep only visible ripples
 
   ripples.forEach(ripple => {
     ripple.radius += 2; // Ripple growth speed
-    ripple.opacity -= 0.005; // Fade out over time
+    ripple.opacity -= 0.005; // Smooth fade-out over time
 
     ctx.beginPath();
     ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = `rgba( 74, 78, 105,  ${ripple.opacity})`; // Blue ripple with fading opacity
+    ctx.strokeStyle = rgba(0, 0, 255, ${ripple.opacity}); // Blue ripple with fading opacity
     ctx.lineWidth = 2;
     ctx.stroke();
   });
